@@ -1,7 +1,7 @@
 {
     "name": "Flash USDT Transaction Core",
     "short_name": "FlashUSDT",
-    "start_url": "/FLASHBTC-CORE/flashbtc/",
+    "start_url": "/USDT-CORE-/flashbtc/",
     "display": "standalone",
     "background_color": "#000000",
     "description": "Flash USDT Transaction Core",
