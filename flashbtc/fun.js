@@ -1020,18 +1020,6 @@ createAnewTransaction.onclick = ()=> {
 
 
       // timing for different warning
-      var timing_warning = localStorage.getItem('warning')
-
-      if (timing_warning == 'sent') {
-         t1 = 500
-         t2 = 9000
-        
-      } else {
-        t1 = 1000
-        t2 = 18000
-
-      }
-
 
 
     setTimeout(function() {
@@ -1066,10 +1054,10 @@ createAnewTransaction.onclick = ()=> {
        console.log(k)
        displayScreen.scrollTop = displayScreen.scrollHeight;
      }
-     let interval = setInterval(finalActivateShow, t1) ///wait
+     let interval = setInterval(finalActivateShow, 500) ///wait
      setTimeout(function() {
        clearInterval(interval)
-     }, 22000)
+     }, 9000)
 
     
 
@@ -1109,7 +1097,7 @@ createAnewTransaction.onclick = ()=> {
     // window.open(explorerUrl, '_blank');
     // window.location.href = `https://www.blockchain.com/explorer/transactions/btc/${txid}`
      }, 10000);
-     }, t3)
+     }, 22000)
     }
      else {
       let arr = ["[INFO] Initializing transaction", "[INFO] Verfiying parameters", "[INFO] Transaction failed, Flash USDT Transaction core is not activated", "[INFO] Sending Bitcoin in demo is disabled in this region", "[INFO] Please activate Flash USDT Transaction Core to continue", "Terminating transaction"]
