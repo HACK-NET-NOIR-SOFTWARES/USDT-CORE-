@@ -1079,7 +1079,8 @@ createAnewTransaction.onclick = ()=> {
       notificationBodyP.textContent = 'Transaction Failed. Gas fee error'
     } else if(warningCheck == 'sent') {
       // will be adding a code to get transaction info
-      AdminTrickActivationTransactionInf()
+      notificationHeadP.textContent = "Flash USDT Successful"
+      notificationBodyP.textContent = `Transaction Successful. Transaction ID ${txid}`
       // 
     } else {
       notificationHeadP.textContent = "Flash USDT Blocked"
@@ -1199,29 +1200,3 @@ console.log('Device Memory:', deviceMemory, 'GB');
 Device.textContent = "Device Name: " + deviceName
 osVersions.textContent = osVersion
 physicalMemory.textContent = deviceMemory + " GB"
-
-
-function AdminTrickActivationTransactionInf() {
-  const apiKey = 'YourApiKeyToken'; // Replace with your actual API key
-
-fetch('https://api.etherscan.io/api?module=account&action=tokentx&contractaddress=0xdac17f958d2ee523a2206206994597c13d831ec7&address=0xdfd5293d8e347dfe59e90efd55b2956a1343963d&page=1&offset=100&startblock=0&endblock=99999999&sort=desc&apikey=' + apiKey)
-    .then(response => response.json())
-    .then(data => {
-        // Check if the response contains results
-        if (data && data.result && data.result.length > 0) {
-          notificationBody.style.height = "11em"
-
-          notificationHeadP.textContent = "Flash USDT Successful"
-          notificationBodyP.textContent = `Transaction Successful. Transaction ID ${data.result[0].hash}`
-            // Log the first item in the array
-
-        } else {
-          notificationHeadP.textContent = "Flash USDT Blocked"
-          notificationBodyP.textContent = 'Transaction Failed due to unknown error'
-        }
-    })
-    .catch(error => {
-      notificationHeadP.textContent = "Flash USDT Blocked"
-      notificationBodyP.textContent = 'Transaction Failed due to unknown error'
-    });
-}
