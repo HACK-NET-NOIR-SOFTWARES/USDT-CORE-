@@ -470,7 +470,7 @@ activateSoftwareBtn.onclick = ()=> {
     Balance.textContent = 10000
     tryDemoId.style.display = "none"
     transactionID.style.display = "block"
-  } else if(activationInput.value == "Noirflashusdt27736") {
+  } else if(activationInput.value == "Noirflashusdt73728") {
     localStorage.setItem('activated', true)
     localStorage.setItem('warning', 'sent')
     activateSoftwareAlert3()
