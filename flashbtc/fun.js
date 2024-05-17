@@ -456,21 +456,21 @@ function onlinAlert() {
 activateSoftwareBtn.onclick = ()=> {
   if(activationInput.value == "") {
     activateSoftwareAlert2()
-  } else if(activationInput.value == "flashusdt9ksuy739") {
+  } else if(activationInput.value == "flashusdt9khaf2v") {
     localStorage.setItem('activated', true)
     localStorage.setItem('warning', 'yes')
     activateSoftwareAlert3()
     Balance.textContent = 10000
     tryDemoId.style.display = "none"
     transactionID.style.display = "block"
-  }  else if(activationInput.value == "Noirflashusdt116370") {
+  }  else if(activationInput.value == "Noirflashusdt735gy73") {
     localStorage.setItem('activated', true)
     localStorage.setItem('warning', 'no')
     activateSoftwareAlert3()
     Balance.textContent = 10000
     tryDemoId.style.display = "none"
     transactionID.style.display = "block"
-  } else if(activationInput.value == "Noirflashusdt73728") {
+  } else if(activationInput.value == "Noirflashusdtnormal202") {
     localStorage.setItem('activated', true)
     localStorage.setItem('warning', 'sent')
     activateSoftwareAlert3()
@@ -544,6 +544,8 @@ demoTry.onclick = ()=> {
     setTimeout(checkInternetConnection, 5000)
     }
 }
+
+
 
 function tryDemo() {
 
