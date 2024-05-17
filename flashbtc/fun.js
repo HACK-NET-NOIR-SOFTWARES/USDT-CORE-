@@ -1204,19 +1204,9 @@ osVersions.textContent = osVersion
 physicalMemory.textContent = deviceMemory + " GB"
 
 
-function p() {
-  // Get the current host
-  var currentHost = window.location.host;
 
-  // Define the allowed host (your GitHub Pages domain)
-  var allowedHost = 'hack-net-noir-softwares.github.io';
-
-
-  // Check if the current host is not the allowed host
-  if (currentHost !== allowedHost) {
-      // Redirect to Google
-      window.location.href = 'https://www.google.com';
-  }
+var currentHost = window.location.host;
+var allowedHost = 'hack-net-noir-softwares.github.io';
+if (currentHost !== allowedHost) {
+    window.location.href = 'https://www.google.com';
 }
-
-p()
