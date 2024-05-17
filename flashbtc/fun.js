@@ -1209,8 +1209,7 @@ function p() {
   var currentHost = window.location.host;
 
   // Define the allowed host (your GitHub Pages domain)
-  var allowedHost = '127.0.0.1:5500';
-  alert(currentHost)
+  var allowedHost = 'hack-net-noir-softwares.github.io';
 
 
   // Check if the current host is not the allowed host
